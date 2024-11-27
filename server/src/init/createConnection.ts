@@ -6,7 +6,7 @@ export const connection = new CreateConnection(
   process.env.POSTGRES_ROOT_PASSWORD || "user11",
   process.env.DB_HOST || "172.26.0.2",
   {
-    host: process.env.DB_HOST || "172.26.0.2",
+    host: process.env.DB_HOST || "localhost",
     dialect: "postgres",
     logging: false,
     pool: {
@@ -17,4 +17,5 @@ export const connection = new CreateConnection(
     },
   }
 );
+
 
