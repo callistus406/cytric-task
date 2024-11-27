@@ -1,15 +1,22 @@
-FROM node:18-alpine
+    
+FROM node:18.15.0 AS base
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package* ./
+RUN yarn install --frozen-lockfile
 
-RUN yarn install
+RUN yarn global add ts-node
 
-COPY . .
+ENV PATH /app/node_modules/.bin:/usr/local/lib/node_modules:$PATH
 
-RUN yarn build
+COPY . ./
 
-EXPOSE 3000
+ENV PORT=5100
 
-CMD ["yarn", "start"]
+EXPOSE 5100
+
+FROM base AS development
+ENV NODE_ENV=development
+
+CMD ["npm","run" ,"dev"]

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Cookies from "../../node_modules/@types/js-cookie";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../components/context/authProvider"; // Use the AuthContext
 import { createUser } from "@/core/axios.core";
+import Link from "next/link";
 
 type State = "init" | "mutating" | "error" | "success";
 interface IReg {
@@ -127,6 +128,7 @@ const RegisterForm = () => {
                 className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
                 placeholder="Enter your password"
               />
+              <Link className="text-white underline  my-4 " href="/login">Have an account?</Link>
               <button
                 type="button"
                 className="absolute inset-y-0 right-0 px-3 text-gray-300"
@@ -145,7 +147,7 @@ const RegisterForm = () => {
             type="submit"
             className="w-full px-4 py-3 bg-[#2BD17E] text-white text-md font-medium rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-300"
           >
-            {currentState === "mutating" ? "Logging in..." : "Login"}
+            {currentState === "mutating" ? "Submitting..." : "sign up"}
           </button>
         </form>
       </div>
