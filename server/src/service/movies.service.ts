@@ -1,4 +1,4 @@
-import { update } from "./../db/repository/user.repository";
+import { update } from "../db/repository/user.repository";
 import { sequelize } from "../db/config/connection";
 import { ICreateMovie, IUpdateMovie } from "../@types/types";
 

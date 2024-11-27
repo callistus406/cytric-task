@@ -1,6 +1,6 @@
 import { ICreateMovie, IUpdateMovie, IVerifyOtp } from "@/@types/type";
 import axios from "axios";
-import Cookies from "js-cookie";
+import Cookies from "../../node_modules/@types/js-cookie";
 export const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_URL_ROOT,
   timeout: 100000,

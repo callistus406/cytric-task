@@ -1,4 +1,4 @@
-import Cookies from "js-cookie";
+import Cookies from "../../node_modules/@types/js-cookie";
 import { token } from "morgan";
 
 const useCookie = () => {
