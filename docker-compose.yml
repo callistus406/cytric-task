@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile 
+    container_name: task_frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - task-network
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile 
+    container_name: task_backend
+    env_file:
+      - ./.env
+    ports:
+      - "5100:5100"
+    networks:
+      - task-network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: task_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ROOT_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+        # POSTGRES_USER: postgres
+        # POSTGRES_PASSWORD: user11
+        # POSTGRES_DB: movies
+    ports:
+      - "5432:5432"
+    networks:
+      - task-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  task-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
