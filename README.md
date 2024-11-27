@@ -1,6 +1,9 @@
 
 # Project Documentation
 
+## Name: UKAOBASI CALLISTUS
+## email: callistus406@gmail.com
+## Loom: https://www.loom.com/share/936d0397d8844d798b69400bb6f83596?sid=81c3f104-c374-4751-b531-7a1aef9a5603
 ## Starting the Project Locally
 
 ### Without Containers
@@ -63,7 +66,6 @@ To manage the project with Docker containers, use the following commands:
 ### Backend Development
  Below is a list of the available endpoints:
 
-- **Postman Link**: [Postman Collection](https://www.postman.com/martian-moon-205350/workspace/task-1/collection/14661662-43d229ec-917a-4b72-8556-1d6789df4eec?action=share&creator=14661662)
 
 - **Base API Endpoint**:  
   `/api/v1`
